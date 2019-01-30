@@ -8,7 +8,22 @@ import ua.golenko.security.config.SecurityConfig;
 
 public class DataDAO {
 
+//	private static DataDAO DATA_DAO = null;
+
+//	private static String SQL_SELECT_BY_Username = "SELECT * FROM games where Username = ?;";
+
 	private static final Map<String, UserAccount> mapUsers = new HashMap<String, UserAccount>();
+
+	// private DataDAO() {
+	//
+	// }
+	//
+	// public static DataDAO getInstance() {
+	// if (DATA_DAO == null) {
+	// DATA_DAO = new DataDAO();
+	// }
+	// return DATA_DAO;
+	// }
 
 	static {
 		initUsers();
