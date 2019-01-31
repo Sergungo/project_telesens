@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.golenko.security.bean.UserAccount;
+import ua.golenko.security.model.UserAccount;
 import ua.golenko.security.request.UserRoleRequestWrapper;
 import ua.golenko.security.utils.AppUtils;
 import ua.golenko.security.utils.SecurityUtils;
@@ -49,13 +49,13 @@ public class SecurityFilter implements Filter {
 
 		if (loginedUser != null) {
 			// User Name
-			String userName = loginedUser.getUserName();
+			String username = loginedUser.getUsername();
 
 			// Роли (Role).
 			List<String> roles = loginedUser.getRoles();
 
-			// Старый пакет request с помощью нового Request с информацией userName и Roles.
-			wrapRequest = new UserRoleRequestWrapper(userName, roles, request);
+			// Старый пакет request с помощью нового Request с информацией username и Roles.
+			wrapRequest = new UserRoleRequestWrapper(username, roles, request);
 		}
 
 		// Страницы требующие входа в систему.
@@ -79,8 +79,7 @@ public class SecurityFilter implements Filter {
 			boolean hasPermission = SecurityUtils.hasPermission(wrapRequest);
 			if (!hasPermission) {
 
-				RequestDispatcher dispatcher //
-						= request.getServletContext().getRequestDispatcher("/WEB-INF/views/accessDeniedView.jsp");
+				RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/accessDeniedView.jsp");
 
 				dispatcher.forward(request, response);
 				return;

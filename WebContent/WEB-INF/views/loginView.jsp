@@ -16,14 +16,12 @@
 		<input type="hidden" name="redirectId" value="${param.redirectId}" />
 		<table border="0">
 			<tr>
-				<td>User Name</td>
-				<td><input type="text" name="userName" value="${user.userName}" />
-				</td>
+				<td>Username</td>
+				<td><input type="text" name="username" value="${user.username}" /></td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="password" name="password"
-					value="${user.password}" /></td>
+				<td><input type="password" name="password" value="${user.password}" /></td>
 			</tr>
 
 			<tr>
@@ -33,8 +31,7 @@
 		</table>
 	</form>
 
-	<p style="color: blue;">Login with:</p>
-
+	
 	<br>
 
 

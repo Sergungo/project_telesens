@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import ua.golenko.security.bean.UserAccount;
+import ua.golenko.security.model.UserAccount;
 
 public class AppUtils {
 

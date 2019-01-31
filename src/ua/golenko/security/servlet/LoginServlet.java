@@ -9,24 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.golenko.security.bean.UserAccount;
 import ua.golenko.security.dao.DataDAO;
+import ua.golenko.security.model.UserAccount;
 import ua.golenko.security.utils.AppUtils;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private DataDAO dao;
+
 	public LoginServlet() {
 		super();
+		dao = DataDAO.getInstance();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
 
 		dispatcher.forward(request, response);
 	}
@@ -35,9 +37,9 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String userName = request.getParameter("userName");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		UserAccount userAccount = DataDAO.findUser(userName, password);
+		UserAccount userAccount = DataDAO.findUser(username, password);
 
 		if (userAccount == null) {
 			String errorMessage = "Invalid userName or Password";
