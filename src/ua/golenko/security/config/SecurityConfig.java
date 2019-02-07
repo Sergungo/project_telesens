@@ -8,8 +8,9 @@ import java.util.Set;
  
 public class SecurityConfig {
  
-
+	public static final String ROLE_ADMIN = "ADMIN";
     public static final String ROLE_USER = "USER";
+    
  
     // String: Role
     // List<String>: urlPatterns.

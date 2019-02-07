@@ -1,12 +1,11 @@
 package ua.golenko.security.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserAccount implements Serializable {
+public class User  {
 
-	private static final long serialVersionUID = 1L;
+	
 
 	private Long id;
 	private String username;
@@ -14,12 +13,25 @@ public class UserAccount implements Serializable {
 
 	private List<String> roles;
 
-	public UserAccount() {
+	public User() {
 
 	}
 
-	public UserAccount(String username, String password, String... roles) {
-//		this.id = id;
+	public User(String username, String password, String... roles) {
+
+		this.username = username;
+		this.password = password;
+
+		this.roles = new ArrayList<String>();
+		if (roles != null) {
+			for (String r : roles) {
+				this.roles.add(r);
+			}
+		}
+	}
+	
+	public User(Long id, String username, String password, String... roles) {
+		this.id = id;
 		this.username = username;
 		this.password = password;
 
@@ -72,7 +84,7 @@ public class UserAccount implements Serializable {
 	 */
 	@Override
 	public boolean equals(Object other) {
-		return (other instanceof UserAccount) && (id != null) ? id.equals(((UserAccount) other).id) : (other == this);
+		return (other instanceof User) && (id != null) ? id.equals(((User) other).id) : (other == this);
 	}
 
 	/**

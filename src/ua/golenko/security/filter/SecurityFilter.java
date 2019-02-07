@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.golenko.security.model.UserAccount;
+import ua.golenko.security.model.User;
 import ua.golenko.security.request.UserRoleRequestWrapper;
 import ua.golenko.security.utils.AppUtils;
 import ua.golenko.security.utils.SecurityUtils;
@@ -39,7 +39,7 @@ public class SecurityFilter implements Filter {
 
 		// Информация пользователя сохранена в Session
 		// (После успешного входа в систему).
-		UserAccount loginedUser = AppUtils.getLoginedUser(request.getSession());
+		User loginedUser = AppUtils.getLoginedUser(request.getSession());
 
 		if (servletPath.equals("/login")) {
 			chain.doFilter(request, response);

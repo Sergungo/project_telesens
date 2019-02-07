@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.golenko.security.dao.DataDAO;
-import ua.golenko.security.model.UserAccount;
+import ua.golenko.security.dao.UserDAO;
+import ua.golenko.security.model.User;
 import ua.golenko.security.utils.AppUtils;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private DataDAO dao;
+	private UserDAO dao;
 
 	public LoginServlet() {
 		super();
-		dao = DataDAO.getInstance();
+		dao = UserDAO.getInstance();
 	}
 
 	@Override
@@ -39,7 +39,8 @@ public class LoginServlet extends HttpServlet {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		UserAccount userAccount = DataDAO.findUser(username, password);
+
+		User userAccount = UserDAO.findUser(username, password);
 
 		if (userAccount == null) {
 			String errorMessage = "Invalid userName or Password";
