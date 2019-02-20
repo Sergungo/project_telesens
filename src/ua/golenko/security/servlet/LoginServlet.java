@@ -47,8 +47,7 @@ public class LoginServlet extends HttpServlet {
 
 			String errorMessage = "Invalid Username or Password";
 			request.setAttribute("errorMessage", errorMessage);
-			RequestDispatcher dispatcher = this.getServletContext()
-					.getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
