@@ -16,5 +16,5 @@ public class Bus {
     private Date routeDeparture;
     private Date routeArrival;
 
-//    private Route route;
+
 }

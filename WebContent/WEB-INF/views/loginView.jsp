@@ -13,15 +13,16 @@
 	<p style="color: red;">${errorString}</p>
 
 	<form method="POST" action="${pageContext.request.contextPath}/login">
-		<input type="hidden" name="redirectId" value="${param.redirectId}" />
+
 		<table border="0">
 			<tr>
-				<td>Username</td>
+				<td>User Name</td>
 				<td><input type="text" name="username" value="${user.username}" /></td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="password" name="password" value="${user.password}" /></td>
+				<td><input type="password" name="password"
+					value="${user.password}" /></td>
 			</tr>
 
 			<tr>
@@ -31,7 +32,7 @@
 		</table>
 	</form>
 
-	
+
 	<br>
 
 

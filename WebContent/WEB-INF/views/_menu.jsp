@@ -13,6 +13,6 @@
 <a href="${pageContext.request.contextPath}/logout">
   Logout
 </a>
- 
+
 &nbsp;
-<span style="color:red">[ ${loginedUser.userName} ]</span>
+<span style="color:red">[ ${loginedUser.username} ]</span>

@@ -15,7 +15,7 @@ public class UserDAO {
 	private static final String FIELD_ID = "id";
 	private static final String FIELD_USERNAME = "username";
 	private static final String FIELD_PASSWORD = "password";
-	// private static final String FIELD_ROLES = "roles";
+	 private static final String FIELD_NAME = "name";
 
 	private UserDAO() {
 
@@ -42,13 +42,13 @@ public class UserDAO {
 		item.setId(rs.getLong(FIELD_ID));
 		item.setUsername(rs.getString(FIELD_USERNAME));
 		item.setPassword(rs.getString(FIELD_PASSWORD));
-		// item.setPassword(rs.getString(FIELD_ROLES));
+		item.setName(rs.getString(FIELD_NAME));
 
 		return item;
 	}
 
-	// Find a User by userName and password.
-	public static User findUser(String userName, String password) {
+	// Find a User by username and password.
+	public static User findUser(String username, String password) {
 
 		Connection con = null;
 		User u = null;
@@ -58,7 +58,7 @@ public class UserDAO {
 
 			PreparedStatement st = con.prepareStatement(SQL_SELECT_BY_USERNAME);
 
-			st.setString(1, userName);
+			st.setString(1, username);
 
 			ResultSet rs = st.executeQuery();
 
@@ -74,7 +74,9 @@ public class UserDAO {
 		}
 
 		if (u != null && u.getPassword().equals(password)) {
-			System.out.println(u.toString());
+			
+			
+			
 			return u;
 
 		}
